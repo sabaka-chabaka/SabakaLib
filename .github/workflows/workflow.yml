@@ -76,7 +76,7 @@ jobs:
         run: dotnet restore
         
       - name: Build solution
-        run: dotnet build --no-restore -o ./build --project SabakaLib.csproj -c Release
+        run: dotnet build SabakaLib.csproj --no-restore -o ./build -c Release
         
       - name: Upload builded library
         uses: actions/upload-artifact@v4
