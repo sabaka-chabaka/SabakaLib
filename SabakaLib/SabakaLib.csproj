@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <PackageId>SabakaLib</PackageId>
-        <Version>$(GITHUB_REF_NAME.Replace('v', ''))</Version>
+        <Version>1.0.0</Version>
         <Authors>sabaka-chabaka</Authors>
         <PackageDescription>Краткое описание либы</PackageDescription>
         <PackageProjectUrl>https://github.com/sabaka-chabaka/SabakaLib</PackageProjectUrl>
