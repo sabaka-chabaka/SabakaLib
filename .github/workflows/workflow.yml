@@ -1,0 +1,85 @@
+name: sabaka-CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build solution
+        run: dotnet build --no-restore
+        
+      - name: Run tests
+        run: dotnet test --no-build
+  
+  build-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+            
+      - name: Restore dependencies
+        run: dotnet restore
+      
+      - name: Build solution
+        run: dotnet build --no-restore /p:TreatWarningsAsErrors=true    
+        
+  versions-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Install sabaka-chabaka/NugetSpy
+        run: dotnet tool install --global sabaka-chabaka.NugetSpy --version 1.0.5
+      - name: Run NugetSpy and write summary
+        if: always()
+        run: |
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "### NuGet Spy Analysis Results" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          NO_COLOR=1 nuget-spy >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY    
+          
+  build-artifact:
+    runs-on: ubuntu-latest
+    needs: [ test, build-check, versions-check ]
+      
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+          
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build solution
+        run: dotnet build --no-restore -o ./build --project SabakaLib.csproj -c Release
+        
+      - name: Upload builded library
+        uses: actions/upload-artifact@v4
+        with:
+          name: SabakaLib
+          path: ./build

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SabakaLib.UnitTests/SabakaLib.UnitTests.csproj" />
+  <Project Path="SabakaLib/SabakaLib.csproj" />
+</Solution>
