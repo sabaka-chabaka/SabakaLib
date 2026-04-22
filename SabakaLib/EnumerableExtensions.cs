@@ -20,4 +20,9 @@ public static class EnumerableExtensions
             action(item);
         }
     }
+    
+    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+    {
+        return source.OrderBy(_ => Guid.NewGuid());
+    }
 }
