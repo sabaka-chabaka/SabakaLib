@@ -8,9 +8,9 @@
 
     <PropertyGroup>
         <PackageId>SabakaLib</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>sabaka-chabaka</Authors>
-        <PackageDescription>Краткое описание либы</PackageDescription>
+        <PackageDescription>Library with helper methods/extensions</PackageDescription>
         <PackageProjectUrl>https://github.com/sabaka-chabaka/SabakaLib</PackageProjectUrl>
         <RepositoryUrl>https://github.com/sabaka-chabaka/SabakaLib</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
