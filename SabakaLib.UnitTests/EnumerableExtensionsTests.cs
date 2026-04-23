@@ -37,4 +37,13 @@ public class EnumerableExtensionsTests
         
         Assert.Equal(source, results);
     }
+    
+    [Fact]
+    public void Shuffle_ReturnsDifferentElementsOverTime()
+    {
+        var source = Enumerable.Range(1, 1000).ToList();
+        var results = new List<int>(source.Shuffle());
+        
+        Assert.NotEqual(source, results);
+    }
 }
