@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using Xunit;
 
 namespace SabakaLib.UnitTests;
@@ -30,7 +31,7 @@ public class EnumerableExtensionsTests
     [Fact]
     public void ForEach_CallsActionForEachElement()
     {
-        var source = new List<int> { 1, 2, 3 };
+        var source = new[] { 1, 2, 3 }; 
         var results = new List<int>();
         
         source.ForEach(results.Add);
