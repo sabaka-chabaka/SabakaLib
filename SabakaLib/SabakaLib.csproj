@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <PackageId>SabakaLib</PackageId>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
         <Authors>sabaka-chabaka</Authors>
         <PackageDescription>Library with helper methods/extensions</PackageDescription>
         <PackageProjectUrl>https://github.com/sabaka-chabaka/SabakaLib</PackageProjectUrl>
