@@ -47,4 +47,13 @@ public class EnumerableExtensionsTests
         
         Assert.NotEqual(source, results);
     }
+    
+    [Fact]
+    public void WhereIf_ReturnsElementsMatchingCondition()
+    {
+        var source = new[] { 1, 2, 3 };
+        var results = source.WhereIf(true, x => x == 2);
+        
+        Assert.Equal([2], results);
+    }
 }
