@@ -33,4 +33,10 @@ public class StringExtensionsTests
     {
         Assert.Equal("coolguy..", "coolguys".Truncate(7));
     }
+
+    [Fact]
+    public void Truncate_ReturnsTruncatedStringWithCustomSuffix()
+    {
+        Assert.Equal("coolguy^$^#", "coolguys".Truncate(7, "^$^#"));
+    }
 }
