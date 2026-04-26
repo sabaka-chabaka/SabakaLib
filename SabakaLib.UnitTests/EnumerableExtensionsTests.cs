@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using Xunit;
 
 namespace SabakaLib.UnitTests;
@@ -22,7 +21,7 @@ public class EnumerableExtensionsTests
     [Fact]
     public void WhereNotNull_ReturnsNotNullElements()
     {
-        var source = new List<string?> { "a", null, "b" };
+        List<string?> source = ["a", null, "b"];
         var results = source.WhereNotNull();
         
         Assert.DoesNotContain(results, x => x == null);
@@ -51,7 +50,7 @@ public class EnumerableExtensionsTests
     [Fact]
     public void WhereIf_ReturnsElementsMatchingCondition()
     {
-        var source = new[] { 1, 2, 3 };
+        int[] source = [1, 2, 3];
         var results = source.WhereIf(true, x => x == 2);
         
         Assert.Equal([2], results);
