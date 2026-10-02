@@ -3,6 +3,8 @@ namespace SabakaLib;
 public class Matrix<T>(int rows, int columns)
 {
     private readonly T[,] _matrix = new T[rows, columns];
+    public int Rows => _matrix.GetLength(0);
+    public int Columns => _matrix.GetLength(1);
 
     public T this[int row, int column]
     {
